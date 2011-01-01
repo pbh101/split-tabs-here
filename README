@@ -6,9 +6,6 @@ To add to Chrome from source, follow the standard instructions for loading unpac
 
 Tested on Mac OSX 10.6, Chrome 8.x
 
-KNOWN BUGS:
-- An extra tab is opened in the new window to the left of all tabs.
-
 License attribution: 
 icon.png:
 Portions of this page are reproduced from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.

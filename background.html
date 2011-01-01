@@ -10,6 +10,14 @@
       tabCount = tabs.length;
       var callback = function(){};
       for(i = currentTab.index ; i < tabCount ; i++) {
+        if (i == tabCount - 1) {
+          callback = function() {
+            chrome.tabs.getAllInWindow(targetWindow.id, function(tabsInTargetWindow) {
+              newTabCount = tabsInTargetWindow.length;
+              chrome.tabs.remove(tabsInTargetWindow[newTabCount-1].id);
+            })
+          }
+        }
         chrome.tabs.move(tabs[i].id, {"windowId": targetWindow.id, "index": i-currentTab.index}, callback);
       }
     }
