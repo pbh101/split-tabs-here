@@ -1,0 +1,40 @@
+<html>
+<head>
+<script>
+  function makeMoveTabs(targetWindowId, currentTab) {
+    return function(tabs) {
+      tabCount = tabs.length;
+      for(i = currentTab.index ; i < tabCount ; i++) {
+        tabToMove = tabs[i];
+        chrome.tabs.move(tabToMove.id, {"windowId": targetWindowId, "index": i-currentTab.index});
+      }
+      
+    }
+  }
+  
+  function makeOnCreateWindow(currentTab, sourceWindow){
+    return function(targetWindow) {
+      currentTabId = currentTab.id;
+      targetWindowId = targetWindow.id;
+      sourceWindowId = sourceWindow.id;
+      //chrome.tabs.move(integer tabId, object moveProperties, function callback)
+      chrome.tabs.getAllInWindow(sourceWindowId, makeMoveTabs(targetWindowId, currentTab));
+    } 
+  }
+  
+  function makeOnGetCurrentWindow(currentTab) {
+    return function(sourceWindow) {
+        chrome.windows.create({},
+          makeOnCreateWindow(currentTab, sourceWindow));
+    }
+  }
+
+  function onTabGotten(currentTab) {
+    chrome.windows.getCurrent(
+      makeOnGetCurrentWindow(currentTab));  
+  }
+  
+  chrome.browserAction.onClicked.addListener(function() { chrome.tabs.getSelected(null, onTabGotten); });
+</script>
+</head>
+</html>

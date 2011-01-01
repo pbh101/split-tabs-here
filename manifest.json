@@ -1,0 +1,13 @@
+{
+  "name": "Split Tabs Here",
+  "version": "0.1",
+  "description": "Splits current tabs and all tabs to the right into a different window.",
+  "background_page": "background.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "name": "Split tabs into two windows"
+  },
+  "permissions": [
+    "tabs", "http://*/*"
+  ]
+}
