@@ -17,11 +17,7 @@
   
   function makeOnCreateWindow(currentTab, sourceWindow){
     return function(targetWindow) {
-      currentTabId = currentTab.id;
-      targetWindowId = targetWindow.id;
-      sourceWindowId = sourceWindow.id;
-      //chrome.tabs.move(integer tabId, object moveProperties, function callback)
-      chrome.tabs.getAllInWindow(sourceWindowId, makeMoveTabs(targetWindowId, currentTab));
+      chrome.tabs.getAllInWindow(sourceWindow.id, makeMoveTabs(targetWindow.id, currentTab));
     } 
   }
   
