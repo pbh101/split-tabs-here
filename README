@@ -1,3 +1,7 @@
-To add to Chrome from source, load Chrome's extensions page, pop into Developer Mode, and select the 'Load unpacked extension...' option, and point it to the directory.
+To add to Chrome from source, follow the standard instructions for loading unpacked extensions:
+1. Load Chrome's extensions page
+2. Pop into Developer Mode
+3. Select the 'Load unpacked extension...' option
+4. Point it to the checkout directory.
 
 The icon is from the "merge windows" Google Chrome extension sample. 
