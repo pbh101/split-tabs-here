@@ -1,0 +1,3 @@
+To add to Chrome from source, load Chrome's extensions page, pop into developer mode, and select the 'load unpackaged extension' option, and point it to the directory.
+
+The icon is from the "merge windows" Google Chrome extension sample. 
