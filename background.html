@@ -48,8 +48,10 @@
   }
 
   function onTabGotten(currentTab) {
-    chrome.windows.getCurrent(
-      makeOnGetCurrentWindow(currentTab));  
+  	if (currentTab.index != 0) {
+      chrome.windows.getCurrent(
+        makeOnGetCurrentWindow(currentTab));  
+  	}
   }
   
   chrome.browserAction.onClicked.addListener(function() { chrome.tabs.getSelected(null, onTabGotten); });
