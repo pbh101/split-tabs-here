@@ -8,9 +8,10 @@
   function makeMoveTabs(targetWindow, currentTab) {
     return function(tabs) {
       tabCount = tabs.length;
+      var callback = function(){};
       for(i = currentTab.index ; i < tabCount ; i++) {
         tabToMove = tabs[i];
-        chrome.tabs.move(tabToMove.id, {"windowId": targetWindow.id, "index": i-currentTab.index});
+        chrome.tabs.move(tabToMove.id, {"windowId": targetWindow.id, "index": i-currentTab.index}, callback);
       }
     }
   }
