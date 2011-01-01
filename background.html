@@ -14,14 +14,19 @@
     }
   }
 
+  function getTabMoveCallback(targetWindow, sourceTabIndex, tabCount) {
+    if (sourceTabIndex == tabCount - 1) {
+      return removeExtraTabFunction(targetWindow);
+    } else { 
+      return function() {};
+    }
+  }
+  
   function makeMoveTabs(targetWindow, currentTab) {
     return function(tabs) {
       tabCount = tabs.length;
-      var callback = function(){};
       for(i = currentTab.index ; i < tabCount ; i++) {
-        if (i == tabCount - 1) {
-          callback = removeExtraTabFunction(targetWindow);
-        }
+        var callback = getTabMoveCallback(targetWindow, i, tabCount);
         chrome.tabs.move(tabs[i].id, {"windowId": targetWindow.id, "index": i-currentTab.index}, callback);
       }
     }
