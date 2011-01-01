@@ -1,6 +1,10 @@
 <html>
 <head>
 <script>
+  function halfScreenWidth() {
+    return screen.width/2;
+  }
+
   function makeMoveTabs(targetWindowId, currentTab) {
     return function(tabs) {
       tabCount = tabs.length;
@@ -8,7 +12,6 @@
         tabToMove = tabs[i];
         chrome.tabs.move(tabToMove.id, {"windowId": targetWindowId, "index": i-currentTab.index});
       }
-      
     }
   }
   
@@ -24,8 +27,9 @@
   
   function makeOnGetCurrentWindow(currentTab) {
     return function(sourceWindow) {
-        chrome.windows.create({},
+        chrome.windows.create({"left":halfScreenWidth(), "width":halfScreenWidth() },
           makeOnCreateWindow(currentTab, sourceWindow));
+        chrome.windows.update(sourceWindow.id, {"left":0, "width":halfScreenWidth() });
     }
   }
 
