@@ -26,8 +26,9 @@
     return function(tabs) {
       tabCount = tabs.length;
       for(i = currentTab.index ; i < tabCount ; i++) {
-        var callback = getTabMoveCallback(targetWindow, i, tabCount);
-        chrome.tabs.move(tabs[i].id, {"windowId": targetWindow.id, "index": i-currentTab.index}, callback);
+        chrome.tabs.move(tabs[i].id, 
+            {"windowId": targetWindow.id, "index": i-currentTab.index}, 
+            getTabMoveCallback(targetWindow, i, tabCount));
       }
     }
   }
