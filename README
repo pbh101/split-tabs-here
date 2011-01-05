@@ -4,7 +4,7 @@ To add to Chrome from source, follow the standard instructions for loading unpac
 3. Select the 'Load unpacked extension...' option
 4. Point it to the checkout directory.
 
-Tested on Mac OSX 10.6, Chrome 8.x
+Tested on Mac OSX 10.6, Ubuntu 10.04 with Chrome 8.x
 
 License attribution: 
 icon.png:
