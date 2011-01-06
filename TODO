@@ -1,0 +1,2 @@
+- only resize the windows to half-width side by side if the original window is full-width
+- ensure both windows are side by side in this case -> control height and starting y position
