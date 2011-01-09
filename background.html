@@ -39,19 +39,19 @@
     } 
   }
   
-  function resolveLeftWindowProperties() {
-    return {"left":0, "width":halfScreenWidth() }
+  function resolveLeftWindowProperties(sourceWindow) {
+    return {"left":0, "width":halfScreenWidth(), "top":sourceWindow.top }
   }
   
-  function resolveRightWindowProperties() {
-    return {"left":halfScreenWidth(), "width":halfScreenWidth() }
+  function resolveRightWindowProperties(sourceWindow) {
+    return {"left":halfScreenWidth(), "width":halfScreenWidth(), "top":sourceWindow.top }
   }
   
   function makeOnGetCurrentWindow(currentTab) {
     return function(sourceWindow) {
-        chrome.windows.create(resolveRightWindowProperties(),
+        chrome.windows.create(resolveRightWindowProperties(sourceWindow),
           makeOnCreateWindow(currentTab, sourceWindow));
-        chrome.windows.update(sourceWindow.id, resolveLeftWindowProperties());
+        chrome.windows.update(sourceWindow.id, resolveLeftWindowProperties(sourceWindow));
     }
   }
 
